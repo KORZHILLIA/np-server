@@ -6,8 +6,12 @@ const instance = axios.create({
 });
 const getTNNStatus = async (tnnNumber) => {
   const { data } = await instance.post("/", makeNPQueryTemplate(tnnNumber));
+  if (!data.success) {
+    return data;
+  }
   if (data.data[0].StatusCode) {
     data.data[0].StatusCode = Number(data.data[0].StatusCode);
+    return data.data[0];
   }
   return data.data[0];
 };

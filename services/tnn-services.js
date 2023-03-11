@@ -13,7 +13,9 @@ const getTNN = async (data) => {
 };
 
 const getTNNInfo = async (tnnNumber) => {
+  console.log("haha");
   const {
+    errors,
     Status,
     StatusCode,
     WarehouseSender,
@@ -21,6 +23,10 @@ const getTNNInfo = async (tnnNumber) => {
     CitySender,
     CityRecipient,
   } = await getTNNStatus(tnnNumber);
+  if (errors && errors.length) {
+    const tnnInfo = { errors, tnn: tnnNumber };
+    return tnnInfo;
+  }
   const response = {
     Status,
     StatusCode,
@@ -30,15 +36,15 @@ const getTNNInfo = async (tnnNumber) => {
     CityRecipient,
   };
   if (tnnFinalCodes.includes(StatusCode)) {
-    const finalTNN = await TNN.findOneAndUpdate(
+    const finalTNNInfo = await TNN.findOneAndUpdate(
       { number: tnnNumber },
       { ...response },
       { new: true }
     );
-    return finalTNN;
+    return finalTNNInfo;
   }
-  const tnn = { ...response, tnn: tnnNumber };
-  return tnn;
+  const tnnInfo = { ...response, tnn: tnnNumber };
+  return tnnInfo;
 };
 
 module.exports = { getTNN, getTNNInfo };
