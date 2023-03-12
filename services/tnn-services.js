@@ -42,7 +42,7 @@ const getTNNInfo = async (tnnNumber, _id) => {
     );
     return finalTNNInfo;
   }
-  const tnnInfo = { ...response, tnn: tnnNumber, _id };
+  const tnnInfo = { ...response, number: tnnNumber, _id };
   return tnnInfo;
 };
 
