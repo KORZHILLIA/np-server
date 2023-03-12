@@ -4,7 +4,7 @@ const getTrackInfo = async (req, res) => {
   const { tnnNumber } = req.params;
   const tnn = await getTNN({ number: tnnNumber });
   if (!tnn.StatusCode) {
-    const tnnInfo = await getTNNInfo(tnn.number);
+    const tnnInfo = await getTNNInfo(tnn.number, tnn._id);
     res.json(tnnInfo);
     return;
   }

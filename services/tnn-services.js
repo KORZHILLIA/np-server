@@ -12,8 +12,7 @@ const getTNN = async (data) => {
   return newTNN;
 };
 
-const getTNNInfo = async (tnnNumber) => {
-  console.log("haha");
+const getTNNInfo = async (tnnNumber, _id) => {
   const {
     errors,
     Status,
@@ -43,7 +42,7 @@ const getTNNInfo = async (tnnNumber) => {
     );
     return finalTNNInfo;
   }
-  const tnnInfo = { ...response, tnn: tnnNumber };
+  const tnnInfo = { ...response, tnn: tnnNumber, _id };
   return tnnInfo;
 };
 
