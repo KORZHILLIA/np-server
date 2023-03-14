@@ -1,6 +1,6 @@
 const { NP_KEY } = process.env;
 
-const makeNPQueryTemplate = (tnnNumber) => {
+const makeTNNQueryTemplate = (tnnNumber) => {
   return {
     apiKey: NP_KEY,
     modelName: "TrackingDocument",
@@ -15,4 +15,4 @@ const makeNPQueryTemplate = (tnnNumber) => {
   };
 };
 
-module.exports = makeNPQueryTemplate;
+module.exports = makeTNNQueryTemplate;

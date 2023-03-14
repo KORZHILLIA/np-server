@@ -5,11 +5,13 @@ require("dotenv").config();
 const app = express();
 
 const trackingRouter = require("./routes/tracking-routes");
+const outletRouter = require("./routes/outlet-routes");
 
 app.use(cors());
 app.use(express.json());
 
 app.use("/api/tracking", trackingRouter);
+app.use("/api/outlet", outletRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });

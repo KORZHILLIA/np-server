@@ -1,5 +1,5 @@
 const { TNN } = require("../models/tnn-models");
-const getTNNStatus = require("../outerAPI/api-np");
+const { getTNNStatus } = require("../outerAPI/api-np");
 
 const tnnFinalCodes = [2, 3, 9, 10, 11, 102, 103, 105, 106, 111];
 

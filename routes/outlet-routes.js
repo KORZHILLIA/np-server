@@ -1,9 +1,9 @@
 const express = require("express");
 const createTryCatchWrapper = require("../middlewares/createTryCatchWrapper");
-const tnnControllers = require("../controllers/tnn-controllers");
+const outletControllers = require("../controllers/outlet-controllers");
 
 const router = express.Router();
 
-router.get("/:tnnNumber", createTryCatchWrapper(tnnControllers.getTrackInfo));
+router.get("/:city", createTryCatchWrapper(outletControllers.getOutlets));
 
 module.exports = router;
